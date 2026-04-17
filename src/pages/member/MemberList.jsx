@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { Link } from "react-router-dom";
 
 // fetch로 회원 목록 api에 요청후 
 // 회원의 이메일을 모두 화면에 출력하기
@@ -19,8 +20,8 @@ const MemberList = () => {
         getMemberList()
   }, [])
 
-  const memberNames = memberList.map(({memberName},i) => (
-    <li key={i}>{memberName}</li>
+  const memberNames = memberList.map(({id,memberName},i) => (
+    <li key={i}><Link to={`/members/member-info/${id}`}>{memberName}</Link></li>
   ))
 
   return (
